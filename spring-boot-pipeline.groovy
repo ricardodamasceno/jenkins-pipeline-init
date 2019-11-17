@@ -1,6 +1,9 @@
 node {
     stage("update"){
-        git 'https://github.com/ricardodamasceno/spring-boot.git'
+        git (
+            url: 'https://github.com/ricardodamasceno/spring-boot.git',
+            credentialsId: 'github-personal'
+            )
     }
     stage("build"){
         sh 'mvn clean install'
