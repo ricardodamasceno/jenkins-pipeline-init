@@ -6,7 +6,9 @@ node {
             )
     }
     stage("build"){
-        sh 'mvn clean install'
+        withMaven(maven: 'maven') {
+            sh "mvn clean install"
+        }
     }
     stage("archive"){
         archiveArtifacts 'target/*.jar'
